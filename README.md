@@ -1,6 +1,6 @@
 # ForgeRock OpenDJ
 
-This repository contains Dockerfile and resources to build a Docker image with ForgeRock version OpenDJ-2.7.0-20150306 (nightly, as of this commit) with [Example.ldif](opendj.forgerock.org/Example.ldif) containing users.
+This repository contains Dockerfile and resources to build a Docker image with ForgeRock version OpenDJ-2.7.0-20150306 ([nightly](https://forgerock.org/downloads/opendj-builds/), as of this commit) with [Example.ldif](opendj.forgerock.org/Example.ldif) containing users.
 
 ## Usage
 
