@@ -1,0 +1,31 @@
+#
+# ForgeRock OpenDJ
+# 
+FROM dockerfile/java:latest
+MAINTAINER G. Hussain Chinoy <ghchinoy@gmail.com>
+
+WORKDIR /opt
+
+RUN apt-get install -y wget unzip
+
+RUN wget --quiet http://download.forgerock.org/downloads/opendj/nightly/20150306_0232/OpenDJ-2.7.0-20150306.zip
+RUN unzip OpenDJ-2.7.0-20150306.zip
+RUN rm -r OpenDJ-2.7.0-20150306.zip
+RUN wget http://opendj.forgerock.org/Example.ldif -O /opt/Example.ldif
+
+ENV INSTALLPROP opendj-install.properties
+ENV STARTSH startOpenDJ
+
+COPY $INSTALLPROP /opt/$INSTALLPROP
+COPY startOpenDJ /opt/startOpenDJ
+RUN chmod +x /opt/startOpenDJ
+
+WORKDIR /opt/opendj
+
+RUN ./setup --cli --propertiesFilePath /opt/$INSTALLPROP --acceptLicense --no-prompt
+
+RUN ./bin/status
+
+EXPOSE 1389
+
+ENTRYPOINT ["/opt/startOpenDJ"]

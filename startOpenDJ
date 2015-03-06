@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Start OpenDJ
+#
+
+# TODO
+# expand to allow "status", "http" 
+# default to "start"
+
+HOSTNAME=opendj.example.com
+BINDDN="cn=Directory Manager"
+PORT=4444
+BINDPASSWORD=password
+
+/opt/opendj/bin/dsconfig set-connection-handler-prop \
+  --hostname ${HOSTNAME} --port ${PORT} \
+  --bindDN "${BINDDN}" --bindPassword ${BINDPASSWORD} \
+  --handler-name "HTTP Connection Handler" \
+  --set enabled:true --no-prompt --trustAll \
+
+/opt/opendj/bin/dsconfig set-log-publisher-prop \
+  --hostname ${HOSTNAME} --port ${PORT} \
+  --bindDN "${BINDDN}" --bindPassword ${BINDPASSWORD} \
+  --publisher-name "File-based HTTP Access Logger" \
+  --set enabled:true --no-prompt --trustAll
+
+/opt/opendj/bin/start-ds -N
