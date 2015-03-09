@@ -1,6 +1,7 @@
 # ForgeRock OpenDJ
 
 This repository contains Dockerfile and resources to build a Docker image with ForgeRock version OpenDJ-2.7.0-20150306 ([nightly](https://forgerock.org/downloads/opendj-builds/), as of this commit) with [Example.ldif](opendj.forgerock.org/Example.ldif) containing users.
+Please see `opendj-install.properties` for default cn and password (see below, Build Notes, for other info).
 
 ## Usage
 
@@ -33,7 +34,7 @@ Check out this repo and issue the following commands to build then run a Docker 
 
 Access at ldap://_dockerip_:1389
 
-For boot2docker users, ldap://_boot2dockerip_:1389
+For [boot2docker](https://docs.docker.com/installation/mac/) users, ldap://_boot2dockerip_:1389
 
 
 ### Build Notes
