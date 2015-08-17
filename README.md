@@ -48,3 +48,5 @@ For [boot2docker](https://docs.docker.com/installation/mac/) users, ldap://_boot
 ## To Do
 
 * `startOpenDJ` script is intended to also start the [REST access to OpenDJ](http://docs.forgerock.org/en/opendj/2.6.0/admin-guide/index.html#setup-rest2ldap-connection-handler), but currently doesn't work
+* Change example.ldif to be mountable, so that users can specify their own ldif
+* Add a script to download the latest OpenDJ
